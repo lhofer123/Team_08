@@ -1,16 +1,16 @@
 package com.swt.augmentmycampus
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.StrictMode
+import android.view.MenuInflater
 import android.view.View
 import android.widget.Button
+import android.widget.PopupMenu
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.zxing.integration.android.IntentIntegrator
 import com.swt.augmentmycampus.ui.camera.CameraFragment
 import com.swt.augmentmycampus.ui.data.DataFragment
 import com.swt.augmentmycampus.ui.search.SearchFragment
@@ -58,5 +58,35 @@ class MainActivity : BaseActivity() {
         frag.toggleFlash(view)
     }
 
+    var isPastEventsHidden : Boolean = false
 
+    fun showHideButtonOnClick(v : View) {
+        val popup = PopupMenu(this, v)
+        val inflater : MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.menu_expandable_list_view_dates, popup.menu)
+
+        // We need this text logic because we always build the popup menu from scratch based on the xml file.
+        if (isPastEventsHidden)
+            popup.menu.findItem(R.id.action_show_hide_past_events).setTitle(R.string.action_show_past_events)
+        else
+            popup.menu.findItem(R.id.action_show_hide_past_events).setTitle(R.string.action_hide_past_events)
+
+        popup.setOnMenuItemClickListener { menuItem ->
+            when(menuItem.itemId) {
+                R.id.action_show_hide_past_events-> {
+                    if (isPastEventsHidden) {
+                        // TODO: Show past events
+                        isPastEventsHidden = false
+                    }
+                    else {
+                        // TODO: Hide past events
+                        isPastEventsHidden = true
+                    }
+                }
+            }
+            true
+        }
+
+        popup.show()
+    }
 }

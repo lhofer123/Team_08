@@ -37,6 +37,8 @@
     <string name="label_ects_text">ECTS</string>
     <string name="label_lecturer_text">Lecturer</string>
 
+    <string name="action_hide_past_events">Hide past events</string>
+    <string name="action_show_past_events">Show past events</string>
 
     <string name="settings_language">Language</string>
 </resources>

@@ -114,17 +114,12 @@ class DataFragmentTest {
 
         onView(withId(R.id.show_hide_dates_button)).perform(scrollTo()).check(matches(isDisplayed()))
         onView(withId(R.id.show_hide_dates_button)).perform(click())
-        onView(withId(R.id.action_show_hide_past_events)).check(matches(isDisplayed()))
-        onView(withId(R.id.action_show_hide_past_events)).check(matches(withText("Hide past events")))
-        onView(withId(R.id.action_show_hide_past_events)).perform(click())
+        onView(withText("Hide past events")).check(matches(isDisplayed())).perform(click())
 
         onView(withId(R.id.show_hide_dates_button)).perform(click())
-        onView(withId(R.id.action_show_hide_past_events)).check(matches(isDisplayed()))
-        onView(withId(R.id.action_show_hide_past_events)).check(matches(withText("Show past events")))
+        onView(withText("Show past events")).check(matches(isDisplayed())).perform(click())
 
         onView(withId(R.id.show_hide_dates_button)).perform(click())
-        onView(withId(R.id.action_show_hide_past_events)).check(matches(isDisplayed()))
-        onView(withId(R.id.action_show_hide_past_events)).check(matches(withText("Hide past events")))
+        onView(withText("Hide past events")).check(matches(isDisplayed()))
     }
-
 }
